@@ -1,13 +1,7 @@
 #ifndef MATRIX_STRUCT_CPP
 #define MATRIX_STRUCT_CPP
-
 #include "Matrix.h"
 
-/*
- *  ---------------------------------------------------------------------------
- *                        WE START THE METHODS FROM HERE
- *  ---------------------------------------------------------------------------
- */
 template <class Type>
 Matrix<Type>::Matrix(const size_t rows, const size_t cols, std::vector<std::vector<Type>> mat) : _rows(rows), _cols(cols), _matrix(mat)
 {
@@ -153,7 +147,7 @@ template <class Type>
 Matrix<Type> Matrix<Type>::operator-(const Matrix<Type> &Mat)
 {
     Matrix<Type> result(this->_rows, this->_cols);
-    Alloc(result._matrix);
+    result.Alloc();
     for (size_t i = 0; i < this->_rows; i++)
     {
         for (size_t j = 0; j < this->_cols; j++)
@@ -169,7 +163,7 @@ template <class Type>
 Matrix<Type> Matrix<Type>::operator*(const Matrix<Type> &Mat)
 {
     Matrix<Type> result(this->_rows, this->_cols);
-    Alloc(result._matrix);
+    result.Alloc();
     for (size_t i = 0; i < this->_rows; i++)
     {
         for (size_t j = 0; j < this->_cols; j++)
@@ -183,7 +177,6 @@ Matrix<Type> Matrix<Type>::operator*(const Matrix<Type> &Mat)
     return result;
 }
 
-// Access the individual elements
 template <class Type>
 Type &Matrix<Type>::operator()(const size_t &row, const size_t &col)
 {
@@ -279,7 +272,7 @@ const Type &Matrix<Type>::operator()(const size_t &row, const size_t &col) const
 // Matrix<Type> Matrix<Type>::operator+(const Matrix<Type> &Mat)
 // {
 //     Matrix<Type> result(this->_rows, this->_cols);
-//     Alloc(result._matrix);
+//     result.Alloc();
 //     for (size_t i = 0; i < this->_rows; i++)
 //     {
 //         for (size_t j = 0; j < this->_cols; j++)
