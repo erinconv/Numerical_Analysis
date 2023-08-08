@@ -1,0 +1,4 @@
+# All executable files
+*.exe
+.vscode/*
+main.cpp
